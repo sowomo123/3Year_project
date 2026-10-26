@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const supabase = require('./db');
 
 const app = express();
 app.use(cors());
@@ -12,6 +13,12 @@ const PORT = process.env.PORT || 4000;
 // Health check: tells us the service is alive
 app.get('/health', (req, res) => {
   res.json({ service: SERVICE_NAME, status: 'ok' });
+});
+
+app.get('/movies', async (req, res) => {
+  const { data, error } = await supabase.from('movies').select('*');
+  if (error) return res.status(500).json({ error: error.message });
+  res.json(data);
 });
 
 // Error handler: catches mistakes so the service doesn't crash
