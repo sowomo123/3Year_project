@@ -35,7 +35,8 @@ const Register = () => {
   return (
     <div className="auth-page">
       <div className="auth-container">
-        <h1>Register</h1>
+        <h1>Create Account</h1>
+        <p className="auth-subtitle">Join Druk Cinema and start booking your favorite movies today</p>
         {error && <div className="error">{error}</div>}
         <form onSubmit={handleSubmit}>
           <input
@@ -47,14 +48,14 @@ const Register = () => {
           />
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Email address"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             required
           />
           <input
             type="tel"
-            placeholder="Phone"
+            placeholder="Phone number"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             required
@@ -66,10 +67,10 @@ const Register = () => {
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             required
           />
-          <button type="submit">Register</button>
+          <button type="submit">Create Account</button>
         </form>
         <p>
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/login">Sign In</Link>
         </p>
       </div>
     </div>

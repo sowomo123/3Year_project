@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import MovieDetails from './pages/MovieDetails';
 import Booking from './pages/Booking';
 import MyTickets from './pages/MyTickets';
+import Footer from './components/Footer';
 
 const ProtectedRoute = ({ children }) => {
   const { token } = useAuth();
@@ -31,23 +32,24 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/movies/:id" element={<MovieDetails />} />
-            <Route 
-              path="/booking/:showtimeId" 
+            <Route
+              path="/booking/:showtimeId"
               element={
                 <ProtectedRoute>
                   <Booking />
                 </ProtectedRoute>
-              } 
+              }
             />
-            <Route 
-              path="/my-tickets" 
+            <Route
+              path="/my-tickets"
               element={
                 <ProtectedRoute>
                   <MyTickets />
                 </ProtectedRoute>
-              } 
+              }
             />
           </Routes>
+          <Footer />
         </div>
       </Router>
     </AuthProvider>

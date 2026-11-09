@@ -30,12 +30,13 @@ const Login = () => {
   return (
     <div className="auth-page">
       <div className="auth-container">
-        <h1>Login</h1>
+        <h1>Welcome Back</h1>
+        <p className="auth-subtitle">Sign in to access your bookings and continue your cinema experience</p>
         {error && <div className="error">{error}</div>}
         <form onSubmit={handleSubmit}>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Email address"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             required
@@ -47,10 +48,10 @@ const Login = () => {
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             required
           />
-          <button type="submit">Login</button>
+          <button type="submit">Sign In</button>
         </form>
         <p>
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/register">Create Account</Link>
         </p>
       </div>
     </div>

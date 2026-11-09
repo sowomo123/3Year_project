@@ -27,10 +27,10 @@ const Movies = () => {
   return (
     <div className="movies-page">
       <div className="page-header">
-        <h1>Movies</h1>
+        <h1>All Movies</h1>
         <input
           type="text"
-          placeholder="Search movies..."
+          placeholder="Search movies by title or genre..."
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
           className="search-input"
@@ -39,12 +39,23 @@ const Movies = () => {
       <div className="movie-grid">
         {filteredMovies.map(movie => (
           <Link key={movie.id} to={`/movies/${movie.id}`} className="movie-card">
-            <img src={movie.poster_url || '/placeholder.jpg'} alt={movie.title} />
+            <div className="movie-poster-wrapper">
+              <img src={movie.poster_url || '/placeholder.jpg'} alt={movie.title} />
+              <div className="movie-overlay">
+                <span className="rating">⭐ {movie.rating}</span>
+              </div>
+            </div>
             <div className="movie-info">
               <h3>{movie.title}</h3>
-              <p>{movie.genre} | {movie.language}</p>
-              <p>{movie.duration} min</p>
-              <span className="rating">⭐ {movie.rating}</span>
+              <div className="movie-meta">
+                <span className="movie-tag">{movie.genre}</span>
+                <span className="movie-tag">{movie.language}</span>
+                <span className="movie-tag">{movie.duration} min</span>
+              </div>
+              <div className="movie-card-actions">
+                <span className="movie-action-btn secondary">View Details</span>
+                <span className="movie-action-btn primary">Book Tickets</span>
+              </div>
             </div>
           </Link>
         ))}
